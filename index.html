@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="author" content="Arjen Arumalingam and Bootstrap contributors">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Voice Assistant</title>
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- Input area -->
+    <form>
+    <button type="button" class= "btn btn-primary btn-lg" onclick="record()">Assistance!</button>
+    <input type="text" name="" id="speechToText" placeholder="Speak Something">
+
+    <!-- Below is the script for voice recognition and conversion to text-->
+    <script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "en-GB";
+
+            recognition.onresult = function(event) {
+                // console.log(event);
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+        }
+    </script>
+    </form>
+</body>
+</html>
